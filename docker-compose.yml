@@ -6,12 +6,12 @@ services:
         environment:
             - VIRTUAL_HOST=${PROJECT_URL}
         volumes:
-            - ./src:/code
-            - ./src/site.conf:/etc/nginx/conf.d/site.conf
+            - ./src:/usr/share/nginx/html
+            - ./site.conf:/etc/nginx/conf.d/site.conf
         links:
             - php
     php:
         image: php:7.2-fpm-alpine3.10
         network_mode: bridge
         volumes:
-            - ./src:/code
+            - ./src:/usr/share/nginx/html
